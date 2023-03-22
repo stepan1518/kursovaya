@@ -1,5 +1,4 @@
 #include <gl/gl.h>
-#include <stdlib.h>
 #define LENGTH 1000000
 
 static void drawOS(const float min_x, const float max_x, const float min_y, const float max_y);
