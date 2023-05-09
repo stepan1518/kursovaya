@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1683661748 source:d:\курсач\прога\graph\main.c
+	<windows.h>
+	<gl/gl.h>
+
+1679173839 d:\курсач\прога\graph\func.h
+
+1683661694 source:d:\курсач\прога\graph\func.c
+	<math.h>
+
+1683661426 source:d:\курсач\прога\graph\graph.c
+	<windows.h>
+	<gl/gl.h>
+	"stb/stb_easy_font.h"
+	"stb/stb_image.h"
+
+1683657032 d:\курсач\прога\graph\stb\stb_easy_font.h
+	<stdlib.h>
+	<math.h>
+
+1683649102 d:\курсач\прога\graph\stb\stb_image.h
+	"stb_image.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<math.h>
+	<stdio.h>
+	<assert.h>
+	<stdint.h>
+	<emmintrin.h>
+	<intrin.h>
+	<arm_neon.h>
+

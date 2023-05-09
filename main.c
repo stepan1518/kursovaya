@@ -82,12 +82,13 @@ int WINAPI WinMain(HINSTANCE hInstance,
         {
             /* OpenGL animation code goes here */
 
-            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
+            glColor3f(0.0f, 0.0f, 0.0f);
 
             glPushMatrix();
 
-            graph(func, -1.0f, 4.0f);
+            graph(func, 10.0f, 11.0f);
 
             glPopMatrix();
 
