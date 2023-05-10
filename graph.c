@@ -3,12 +3,13 @@
 #include "stb/stb_easy_font.h"
 #include "stb/stb_image.h"
 #define LENGTH 1000000
-#define ZERO 0.000001f
+#define ZERO 0.0001f
 
 static void drawOS(const float min_x, const float max_x, const float min_y, const float max_y, float* pos_x, float* pos_y);
 static void draw(const POINTFLOAT* points);
 static void drawDottedLine(const float start_x, const float start_y, const float end_x, const float end_y);
 static void drawFormat(const POINTFLOAT* points, const POINTFLOAT* max_point, const POINTFLOAT* min_point, const float pos_x, const float pos_y);
+static float absolute(const float x);
 static void print_string(float x, float y, char *text, float r, float g, float b);
 
 POINTFLOAT points[LENGTH];
@@ -31,15 +32,17 @@ void graph(float (*f)(const float), const float min_x, const float max_x)
         for (int i = 1; i < LENGTH; i++, x += step)
         {
             points[i].y = f(x);
-            if (min_y > points[i].y && x <= max_x)
+            if (min_y > points[i].y)
             {
                 min_point = &points[i];
-                min_y = points[i].y;
+                if (x <= max_x)
+                    min_y = points[i].y;
             }
-            if (max_y < points[i].y && x <= max_x)
+            if (max_y < points[i].y)
             {
                 max_point = &points[i];
-                max_y = points[i].y;
+                if (x <= max_x)
+                    max_y = points[i].y;
             }
         }
 
@@ -129,8 +132,6 @@ static void drawDottedLine(const float start_x, const float start_y, const float
 
 static void drawFormat(const POINTFLOAT* points, const POINTFLOAT* max_point, const POINTFLOAT* min_point, const float pos_x, const float pos_y)
 {
-    int tex_text_id;
-    float rectCoord[] = {0, 0, 1, 0, 1, 1, 0, 1}, texCoord[] = {0, 1, 1, 1, 1, 0, 0, 0};
     drawDottedLine(points[0].x, points[0].y, points[0].x, pos_y);
     drawDottedLine(points[LENGTH - 1].x, points[LENGTH - 1].y, points[LENGTH - 1].x, pos_y);
     drawDottedLine(min_point->x, min_point->y, pos_x, min_point->y);
@@ -140,7 +141,7 @@ static void drawFormat(const POINTFLOAT* points, const POINTFLOAT* max_point, co
     const float indent = 0.03f;
     glScalef(0.004, -0.004, 1);
     print_string((1 - indent) * k, (-pos_y + indent) * k, "X", 0, 0, 0);
-    //print_string((pos_x + indent) * k, (-1 + indent) * k, "Y", 0, 0, 0);
+    print_string((pos_x + indent) * k, (-1 + indent) * k, "Y", 0, 0, 0);
 
     char text[20];
 
@@ -169,4 +170,9 @@ static void print_string(float x, float y, char *text, float r, float g, float b
   glVertexPointer(2, GL_FLOAT, 16, buffer);
   glDrawArrays(GL_QUADS, 0, num_quads*4);
   glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+static float absolute(const float x)
+{
+    return x > 0? x : -x;
 }

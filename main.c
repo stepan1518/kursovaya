@@ -88,7 +88,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
             glPushMatrix();
 
-            graph(func, 10.0f, 11.0f);
+            graph(func, 0.0f, 10.0f);
 
             glPopMatrix();
 
