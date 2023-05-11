@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1683661748 source:d:\курсач\прога\graph\main.c
+1683757353 source:d:\курсач\прога\graph\main.c
 	<windows.h>
 	<gl/gl.h>
 
 1679173839 d:\курсач\прога\graph\func.h
 
-1683661694 source:d:\курсач\прога\graph\func.c
+1683757563 source:d:\курсач\прога\graph\func.c
 	<math.h>
 
-1683661426 source:d:\курсач\прога\graph\graph.c
+1683756034 source:d:\курсач\прога\graph\graph.c
 	<windows.h>
 	<gl/gl.h>
 	"stb/stb_easy_font.h"
